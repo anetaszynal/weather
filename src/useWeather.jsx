@@ -24,10 +24,13 @@ export const useWeather = () => {
         const weatherResponse = await Axios.get(
           `http://dataservice.accuweather.com/forecasts/v1/daily/1day/${cityKey}?apikey=${apiKey}&language=pl-PL`
         );
-        const iconNumber = weatherResponse.data.DailyForecasts[0].Day.Icon;
+        const iconDayNumber = weatherResponse.data.DailyForecasts[0].Day.Icon;
+        const iconNightNumber =
+          weatherResponse.data.DailyForecasts[0].Night.Icon;
         setWeather({
           state: "succes",
-          dayIcon: Icon.find(({ id }) => id === iconNumber).icon,
+          dayIcon: Icon.find(({ id }) => id === iconDayNumber).icon,
+          nightIcon: Icon.find(({ id }) => id === iconNightNumber).icon,
           dayInfo: weatherResponse.data.DailyForecasts[0].Day.IconPhrase,
           nightInfo: weatherResponse.data.DailyForecasts[0].Night.IconPhrase,
           dayTemperature: (
@@ -41,6 +44,7 @@ export const useWeather = () => {
             0.5555556
           ).toFixed(1),
         });
+        console.log(weatherResponse, iconDayNumber, iconNightNumber);
       } catch (error) {
         console.error(error);
         setWeather({ state: "error" });

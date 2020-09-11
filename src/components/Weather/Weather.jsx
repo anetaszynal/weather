@@ -11,7 +11,7 @@ export const Weather = ({ city, weather }) => (
     </div>
     <div>
       <h3>Noc:</h3>
-
+      <img src={weather.nightIcon} alt=""></img>
       <p>{weather.nightInfo}</p>
       <p>{weather.nightTemperature}&#x2103;</p>
     </div>
