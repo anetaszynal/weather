@@ -1,24 +1,27 @@
 import React from "react";
-import { useDate } from "./useDate";
-import { formatDate } from "../../lib/utils";
+import {useDate} from "./useDate";
+import {formatDate} from "../../lib/utils";
+import {Title, Content, Input, Button} from "./styled";
+import {Paragraph} from "../../lib/Style/styled";
 
-export const Form = ({ getCityName, onFormCityButtonClick }) => {
-  const date = useDate();
+export const Form = ({getCityName, onFormCityButtonClick}) => {
+    const date = useDate();
 
-  return (
-    <>
-      <h2>{`Witaj! Dziś jest ${formatDate(date)}`}</h2>
-      <form>
-        <label>
-          <input
-            type="text"
-            name="city"
-            placeholder="Wpisz nazwę miejscowości"
-            onChange={getCityName}
-          ></input>
-        </label>
-        <button onClick={onFormCityButtonClick}>{`🔍`}</button>
-      </form>
-    </>
-  );
+    return (
+        <>
+            <Content as="header">
+                <Title>Witaj!</Title>
+                <Paragraph>{`Dziś jest ${formatDate(date)}`}</Paragraph>
+            </Content>
+            <Content>
+                <Input
+                    type="text"
+                    name="city"
+                    placeholder="Wpisz nazwę miejscowości"
+                    onChange={getCityName}
+                />
+                <Button onClick={onFormCityButtonClick}>{`🔍`}</Button>
+            </Content>
+        </>
+    );
 };
