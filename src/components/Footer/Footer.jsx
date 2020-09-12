@@ -1,9 +1,8 @@
 import React from "react";
-import {Content, Paragraph} from "../../lib/Style/styled";
+import { Paragraph} from "./styled";
 
 export const Footer = () => (
-    <Content as="footer">
-        <Paragraph>Strona wykonana przez Aneta Szynal</Paragraph>
+    <footer>
         <Paragraph>Dane pogodowe pobrane zostały ze strony: https://www.accuweather.com</Paragraph>
-    </Content>
+    </footer>
 );
