@@ -1,8 +1,9 @@
 import React from "react";
-import { Content, Title } from "./styled";
+import {Title} from "./styled";
+import {Content} from "../../lib/Style/styled";
 
 export const Header = () => (
-  <Content>
-    <Title>Pogoda na dziś !</Title>
-  </Content>
+    <Content>
+        <Title>Pogoda na dziś !</Title>
+    </Content>
 );
