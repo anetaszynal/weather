@@ -1,5 +1,5 @@
 import React from "react";
-import { Paragraph} from "./styled";
+import {Paragraph} from "./styled";
 
 export const Footer = () => (
     <footer>
