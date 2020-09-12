@@ -1,19 +1,23 @@
 import React from "react";
+import {Article} from "./Article";
+import {Title, Content} from "./styled";
 
-export const Weather = ({ city, weather }) => (
-  <>
-    <h2>Pogoda dla miasta {city} </h2>
-    <div>
-      <h3>Dzień:</h3>
-      <img src={weather.dayIcon} alt=""></img>
-      <p>{weather.dayInfo}</p>
-      <p>{weather.dayTemperature}&#x2103;</p>
-    </div>
-    <div>
-      <h3>Noc:</h3>
-      <img src={weather.nightIcon} alt=""></img>
-      <p>{weather.nightInfo}</p>
-      <p>{weather.nightTemperature}&#x2103;</p>
-    </div>
-  </>
+export const Weather = ({city, weather}) => (
+    <>
+        <Title>{city} </Title>
+        <Content>
+            <Article
+                title="Dzień"
+                icon={weather.dayIcon}
+                info={weather.dayInfo}
+                temperature={weather.dayTemperature}
+            />
+            <Article
+                title="Noc"
+                icon={weather.nightIcon}
+                info={weather.nightInfo}
+                temperature={weather.nightTemperature}
+            />
+        </Content>
+    </>
 );
