@@ -1,7 +1,8 @@
 import React from "react";
+import { Content, Title } from "./styled";
 
 export const Header = () => (
-  <header>
-    <h1>Pogoda na dziś !</h1>
-  </header>
+  <Content>
+    <Title>Pogoda na dziś !</Title>
+  </Content>
 );
