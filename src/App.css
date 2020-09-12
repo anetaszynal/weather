@@ -1,11 +1,29 @@
 html {
-  box-sizing: border-box;
+    box-sizing: border-box;
+    height: 100%;
 }
 
-*, ::after, ::before {
-  box-sizing: inherit;
+@media (max-width: 730px) {
+    html {
+        height: 180%;
+    }
+}
+
+body {
+    background: linear-gradient(0deg, rgba(0, 168, 255, 0.25) 33%, rgba(0, 168, 255, 0.54) 78%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
 }
 
 #root {
-  font-family: 'Ubuntu', sans-serif;
+    max-width: 60%;
+    margin: 20px auto;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+@media (max-width: 400px) {
+    #root {
+        max-width: 100%;
+    }
 }
