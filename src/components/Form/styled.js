@@ -30,7 +30,7 @@ export const Input = styled.input`
   background-color: #192a56;
   border: none;
   border-radius: 8px;
-  box-shadow: 1px -2px 3px 1px rgb(22 20 147);
+  box-shadow: 0px 0px 4px 0px rgb(22 20 147);
     
       &::placeholder {
       color: white;
@@ -47,7 +47,7 @@ export const Button = styled.button`
   border-radius: 8px;
   width: 40px;
   height: 40px;
-  box-shadow: 1px -2px 3px 1px rgb(22 20 147);
+  box-shadow: 0px 0px 4px 0px rgb(22 20 147);
   background-color: #192a56;
   border: none;
   color: white;

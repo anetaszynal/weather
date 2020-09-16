@@ -27,7 +27,7 @@ export const Button = styled.button`
   color: white;
   font-weight: bold;
   border-radius: 8px;
-  box-shadow: 1px -2px 3px 1px rgb(22 20 147);
+  box-shadow: 0px 0px 4px 0px rgb(22 20 147);
   
     &:hover{
       filter: brightness(150%);
