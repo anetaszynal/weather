@@ -5,6 +5,7 @@ import {Footer} from "./components/Footer";
 import {Weather} from "./components/Weather";
 import {useWeather} from "./useWeather";
 import {Loading, Failure} from "./styled";
+import {Buttons} from "./components/Buttons";
 
 function App() {
     const {weather, city, getCityName, fetchData} = useWeather();
@@ -16,10 +17,12 @@ function App() {
 
     return (
         <>
+
             <Form
                 getCityName={getCityName}
                 onFormCityButtonClick={onFormCityButtonClick}
             />
+            <Buttons/>
             {weather.state === "loading" && (
                 <Loading>Proszę czekać, trwa pobieranie danych ...</Loading>
             )}
