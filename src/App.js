@@ -8,7 +8,7 @@ import {Loading, Failure} from "./styled";
 import {Buttons} from "./components/Buttons";
 
 function App() {
-    const {weather, city, getCityName, fetchData} = useWeather();
+    const {weather, getCityName, fetchData} = useWeather();
 
     const onFormCityButtonClick = (event) => {
         event.preventDefault();
@@ -22,7 +22,6 @@ function App() {
                 getCityName={getCityName}
                 onFormCityButtonClick={onFormCityButtonClick}
             />
-            <Buttons/>
             {weather.state === "loading" && (
                 <Loading>Proszę czekać, trwa pobieranie danych ...</Loading>
             )}
@@ -32,7 +31,8 @@ function App() {
                     miejscowości.
                 </Failure>
             )}
-            {weather.state === "succes" && <Weather city={city} weather={weather}/>}
+            {weather.state === "succes" && <Weather weather={weather}/>}
+            <Buttons/>
             <Footer/>
         </>
     );

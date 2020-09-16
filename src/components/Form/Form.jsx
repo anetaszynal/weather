@@ -9,7 +9,7 @@ export const Form = ({getCityName, onFormCityButtonClick}) => {
     return (
         <>
             <Content as="header">
-                <Title>Słonecznego dnia 😉</Title>
+                <Title>Słonecznego dnia {`😉`}</Title>
                 <Paragraph>{formatDate(date)}</Paragraph>
             </Content>
             <Content>
@@ -19,7 +19,7 @@ export const Form = ({getCityName, onFormCityButtonClick}) => {
                     placeholder="Wpisz nazwę miejscowości"
                     onChange={getCityName}
                 />
-                <Button onClick={onFormCityButtonClick}>🔍</Button>
+                <Button onClick={onFormCityButtonClick}>{`🔍`}</Button>
             </Content>
         </>
     );
