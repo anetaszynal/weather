@@ -31,6 +31,7 @@ export const Input = styled.input`
   border: none;
   border-radius: 8px;
   box-shadow: 0px 0px 4px 0px rgb(22 20 147);
+  color: white;
     
       &::placeholder {
       color: white;

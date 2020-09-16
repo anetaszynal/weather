@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Title = styled.h2`
   margin: 20px 20px;
-  font-size: 24px;
+  font-size: 20px;
   color: #192a56;
 `;
 
@@ -15,13 +15,9 @@ export const Content = styled.div`
     }
 `;
 
-export const Weather = styled.article`
-  margin: 20px;
-`;
-
 export const Paragraph = styled.p`
-   margin: 20px;
-   font-size: 20px;
+   margin: 10px;
+   font-size: 18px;
    font-weight: bold;
    color: #192a56;
    line-height: 1.5;
@@ -33,6 +29,7 @@ export const Paragraph = styled.p`
 `;
 
 export const Image = styled.img`
+  max-width: 70px;
   display: block;
   margin: auto;
 `
