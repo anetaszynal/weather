@@ -28,4 +28,8 @@ export const Button = styled.button`
   font-weight: bold;
   border-radius: 8px;
   box-shadow: 1px -2px 3px 1px rgb(22 20 147);
+  
+    &:hover{
+      filter: brightness(150%);
+    }
 `;
