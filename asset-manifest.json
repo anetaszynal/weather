@@ -1,0 +1,42 @@
+{
+  "files": {
+    "main.css": "/weather/static/css/main.26f1971d.chunk.css",
+    "main.js": "/weather/static/js/main.f40c542c.chunk.js",
+    "main.js.map": "/weather/static/js/main.f40c542c.chunk.js.map",
+    "runtime-main.js": "/weather/static/js/runtime-main.d8725fa2.js",
+    "runtime-main.js.map": "/weather/static/js/runtime-main.d8725fa2.js.map",
+    "static/js/2.a5e95791.chunk.js": "/weather/static/js/2.a5e95791.chunk.js",
+    "static/js/2.a5e95791.chunk.js.map": "/weather/static/js/2.a5e95791.chunk.js.map",
+    "index.html": "/weather/index.html",
+    "precache-manifest.8c8dd54581ff9f796b12943b37accda7.js": "/weather/precache-manifest.8c8dd54581ff9f796b12943b37accda7.js",
+    "service-worker.js": "/weather/service-worker.js",
+    "static/css/main.26f1971d.chunk.css.map": "/weather/static/css/main.26f1971d.chunk.css.map",
+    "static/js/2.a5e95791.chunk.js.LICENSE.txt": "/weather/static/js/2.a5e95791.chunk.js.LICENSE.txt",
+    "static/media/1.png": "/weather/static/media/1.1b9acb92.png",
+    "static/media/12.png": "/weather/static/media/12.c59713ea.png",
+    "static/media/13-14.png": "/weather/static/media/13-14.401d0c75.png",
+    "static/media/15.png": "/weather/static/media/15.d15e8369.png",
+    "static/media/16-17.png": "/weather/static/media/16-17.909a3400.png",
+    "static/media/18.png": "/weather/static/media/18.01cfb932.png",
+    "static/media/19.png": "/weather/static/media/19.d1b52269.png",
+    "static/media/2-4.png": "/weather/static/media/2-4.617f015b.png",
+    "static/media/20-21,23.png": "/weather/static/media/20-21,23.162a9902.png",
+    "static/media/22.png": "/weather/static/media/22.ee9a6f92.png",
+    "static/media/24-25.png": "/weather/static/media/24-25.1ba7cb5f.png",
+    "static/media/26,29.png": "/weather/static/media/26,29.d52227f8.png",
+    "static/media/33.png": "/weather/static/media/33.1867a707.png",
+    "static/media/39.png": "/weather/static/media/39.68ba06ba.png",
+    "static/media/40.png": "/weather/static/media/40.dd4c48be.png",
+    "static/media/41-42.png": "/weather/static/media/41-42.b9252969.png",
+    "static/media/43-44.png": "/weather/static/media/43-44.b9f82402.png",
+    "static/media/5.png": "/weather/static/media/5.ab3a26ef.png",
+    "static/media/6.png": "/weather/static/media/6.f9ba61d9.png",
+    "static/media/7.png": "/weather/static/media/7.0a58ad7e.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d8725fa2.js",
+    "static/js/2.a5e95791.chunk.js",
+    "static/css/main.26f1971d.chunk.css",
+    "static/js/main.f40c542c.chunk.js"
+  ]
+}
