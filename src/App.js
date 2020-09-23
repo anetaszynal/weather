@@ -2,13 +2,13 @@ import React from "react";
 import "./App.css";
 import {Form} from "./components/Form";
 import {Footer} from "./components/Footer";
-import {Weather} from "./components/Weather";
+import {DefaultWeather, FiveDayWeather, HoursWeather, Weather} from "./components/Weather";
 import {useWeather} from "./useWeather";
 import {Loading, Failure} from "./styled";
 import {Buttons} from "./components/Buttons";
 
 function App() {
-    const {weather, getCityName, fetchData} = useWeather();
+    const {weather, weatherOption, getCityName, fetchData, fiveDaysWeather, hours, oneDayWeather} = useWeather();
 
     const onFormCityButtonClick = (event) => {
         event.preventDefault();
@@ -17,7 +17,6 @@ function App() {
 
     return (
         <>
-
             <Form
                 getCityName={getCityName}
                 onFormCityButtonClick={onFormCityButtonClick}
@@ -31,8 +30,15 @@ function App() {
                     miejscowości.
                 </Failure>
             )}
-            {weather.state === "succes" && <Weather weather={weather}/>}
-            <Buttons/>
+            {weather.state === "succes" && weatherOption === "oneDay" && <Weather weather={weather}/>}
+            {weather.state === "succes" && weatherOption === "default" && <DefaultWeather weather={weather}/>}
+            {weather.state === "succes" && weatherOption === "fiveDays" && <FiveDayWeather weather={weather}/>}
+            {weather.state === "succes" && weatherOption === "hours" && <HoursWeather weather={weather}/>}
+            <Buttons
+                fiveDaysWeather={fiveDaysWeather}
+                hours={hours}
+                oneDayWeather={oneDayWeather}
+            />
             <Footer/>
         </>
     );
