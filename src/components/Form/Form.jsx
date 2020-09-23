@@ -1,6 +1,6 @@
 import React from "react";
 import {useDate} from "./useDate";
-import {formatDate} from "../../lib/utils";
+import {formatFullDate} from "../../lib/utils";
 import {Title, Paragraph, Content, Input, Button} from "./styled";
 
 export const Form = ({getCityName, onFormCityButtonClick}) => {
@@ -10,7 +10,7 @@ export const Form = ({getCityName, onFormCityButtonClick}) => {
         <>
             <Content as="header">
                 <Title>Słonecznego dnia {`😉`}</Title>
-                <Paragraph>{formatDate(date)}</Paragraph>
+                <Paragraph>{formatFullDate(date)}</Paragraph>
             </Content>
             <Content>
                 <Input
