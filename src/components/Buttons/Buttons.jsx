@@ -1,13 +1,13 @@
 import React from "react";
 import {Paragraph, Wrapper, Button} from "./styled";
 
-export const Buttons = () => (
+export const Buttons = ({fiveDaysWeather, hours, oneDayWeather}) => (
     <>
         <Paragraph>Wybierz: </Paragraph>
         <Wrapper>
-            <Button>na 10 dni</Button>
-            <Button>24-godzinna</Button>
-            <Button>na 15 dni</Button>
+            <Button onClick={hours}>12-godzinna</Button>
+            <Button onClick={oneDayWeather}>na 1 dzień</Button>
+            <Button onClick={fiveDaysWeather}>na 5 dni</Button>
         </Wrapper>
     </>
 )
