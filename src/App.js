@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import {Form} from "./components/Form";
 import {Footer} from "./components/Footer";
-import {DefaultWeather, FiveDayWeather, HoursWeather, Weather} from "./components/Weather";
+import {DefaultWeather, FiveDaysWeather, HoursWeather, OneDayWeather} from "./components/Weather";
 import {useWeather} from "./useWeather";
 import {Loading, Failure} from "./styled";
 import {Buttons} from "./components/Buttons";
@@ -31,10 +31,14 @@ function App() {
                     miejscowości.
                 </Failure>
             )}
-            {weather.state === API_RESPONSE_STATUS.success && weatherOption === "oneDay" && <Weather weather={weather}/>}
-            {weather.state === API_RESPONSE_STATUS.success && weatherOption === "default" && <DefaultWeather weather={weather}/>}
-            {weather.state === API_RESPONSE_STATUS.success && weatherOption === "fiveDays" && <FiveDayWeather weather={weather}/>}
-            {weather.state === API_RESPONSE_STATUS.success && weatherOption === "hours" && <HoursWeather weather={weather}/>}
+            {weather.state === API_RESPONSE_STATUS.success && weatherOption === "oneDay" &&
+            <OneDayWeather weather={weather} weatherData={weather.weather}/>}
+            {weather.state === API_RESPONSE_STATUS.success && weatherOption === "default" &&
+            <DefaultWeather weather={weather} weatherData={weather.weather}/>}
+            {weather.state === API_RESPONSE_STATUS.success && weatherOption === "fiveDays" &&
+            <FiveDaysWeather weather={weather}/>}
+            {weather.state === API_RESPONSE_STATUS.success && weatherOption === "hours" &&
+            <HoursWeather weather={weather}/>}
             <Buttons
                 fiveDaysWeather={fiveDaysWeather}
                 hours={hours}

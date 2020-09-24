@@ -29,32 +29,22 @@ export const useWeather = () => {
                         const oneDayWeatherResponse = await Axios.get(
                             `https://dataservice.accuweather.com/forecasts/v1/daily/1day/${cityKey}?apikey=${API_KEY}&language=pl-PL`
                         );
-                        const iconDayNumber =
-                            oneDayWeatherResponse.data.DailyForecasts[0].Day.Icon;
-                        const iconNightNumber =
-                            oneDayWeatherResponse.data.DailyForecasts[0].Night.Icon;
                         setWeather({
                             state: API_RESPONSE_STATUS.success,
                             city: cityKeyResponse.data[0]?.LocalizedName,
-                            dayIcon: Icon.find(({id}) => id === iconDayNumber).icon,
-                            nightIcon: Icon.find(({id}) => id === iconNightNumber).icon,
-                            dayInfo:
-                            oneDayWeatherResponse.data.DailyForecasts[0].Day.IconPhrase,
-                            nightInfo:
-                            oneDayWeatherResponse.data.DailyForecasts[0].Night.IconPhrase,
-                            dayTemperature: (
-                                (oneDayWeatherResponse.data.DailyForecasts[0].Temperature
-                                        .Maximum.Value -
-                                    32) *
-                                0.5555556
-                            ).toFixed(1),
-                            nightTemperature: (
-                                (oneDayWeatherResponse.data.DailyForecasts[0].Temperature
-                                        .Minimum.Value -
-                                    32) *
-                                0.5555556
-                            ).toFixed(1),
-                        });
+                            weather: {
+                                day: {
+                                    icon: Icon.find(({id}) => id === oneDayWeatherResponse.data.DailyForecasts[0].Day.Icon).icon,
+                                    info: oneDayWeatherResponse.data.DailyForecasts[0].Day.IconPhrase,
+                                    temperature: temperatureCalculate(oneDayWeatherResponse.data.DailyForecasts[0].Temperature.Maximum.Value),
+                                },
+                                night: {
+                                    icon: Icon.find(({id}) => id === oneDayWeatherResponse.data.DailyForecasts[0].Night.Icon).icon,
+                                    info: oneDayWeatherResponse.data.DailyForecasts[0].Night.IconPhrase,
+                                    temperature: temperatureCalculate(oneDayWeatherResponse.data.DailyForecasts[0].Temperature.Minimum.Value),
+                                }
+                            }
+                        })
                         break;
                     case "fiveDays":
                         const fiveDaysWeatherResponse = await Axios.get(
@@ -62,6 +52,7 @@ export const useWeather = () => {
                         );
                         setWeather({
                             state: API_RESPONSE_STATUS.success,
+                            city: cityKeyResponse.data[0]?.LocalizedName,
                             weather: new Array(5).fill().map((item, index) => ({
                                 date: fiveDaysWeatherResponse.data.DailyForecasts[index].Date,
                                 day: {
@@ -81,136 +72,30 @@ export const useWeather = () => {
                         const houersWeatherResponse = await Axios.get(
                             `https://dataservice.accuweather.com/forecasts/v1/hourly/12hour/${cityKey}?apikey=${API_KEY}&language=pl-PL`
                         );
-                        const iconHourOneNumber = houersWeatherResponse.data[0].WeatherIcon;
-                        const iconHourTwoNumber = houersWeatherResponse.data[1].WeatherIcon;
-                        const iconHourThreeNumber =
-                            houersWeatherResponse.data[2].WeatherIcon;
-                        const iconHourFourNumber =
-                            houersWeatherResponse.data[3].WeatherIcon;
-                        const iconHourFiveNumber =
-                            houersWeatherResponse.data[4].WeatherIcon;
-                        const iconHourSixNumber = houersWeatherResponse.data[5].WeatherIcon;
-                        const iconHourSevenNumber =
-                            houersWeatherResponse.data[6].WeatherIcon;
-                        const iconHourEightNumber =
-                            houersWeatherResponse.data[7].WeatherIcon;
-                        const iconHourNineNumber =
-                            houersWeatherResponse.data[8].WeatherIcon;
-                        const iconHourTenNumber = houersWeatherResponse.data[9].WeatherIcon;
-                        const iconHourElevenNumber =
-                            houersWeatherResponse.data[10].WeatherIcon;
-                        const iconHourTwelveNumber =
-                            houersWeatherResponse.data[11].WeatherIcon;
                         setWeather({
                             state: API_RESPONSE_STATUS.success,
                             city: cityKeyResponse.data[0]?.LocalizedName,
-                            hourOneDate: houersWeatherResponse.data[0].DateTime,
-                            hourTwoDate: houersWeatherResponse.data[1].DateTime,
-                            hourThreeDate: houersWeatherResponse.data[2].DateTime,
-                            hourFourDate: houersWeatherResponse.data[3].DateTime,
-                            hourFiveDate: houersWeatherResponse.data[4].DateTime,
-                            hourSixDate: houersWeatherResponse.data[5].DateTime,
-                            hourSevenDate: houersWeatherResponse.data[6].DateTime,
-                            hourEightDate: houersWeatherResponse.data[7].DateTime,
-                            hourNineDate: houersWeatherResponse.data[8].DateTime,
-                            hourTenDate: houersWeatherResponse.data[9].DateTime,
-                            hourElevenDate: houersWeatherResponse.data[10].DateTime,
-                            hourTwelveDate: houersWeatherResponse.data[11].DateTime,
-                            hourOneIcon: Icon.find(({id}) => id === iconHourOneNumber).icon,
-                            hourTwoIcon: Icon.find(({id}) => id === iconHourTwoNumber).icon,
-                            hourThreeIcon: Icon.find(({id}) => id === iconHourThreeNumber)
-                                .icon,
-                            hourFourIcon: Icon.find(({id}) => id === iconHourFourNumber)
-                                .icon,
-                            hourFiveIcon: Icon.find(({id}) => id === iconHourFiveNumber)
-                                .icon,
-                            hourSixIcon: Icon.find(({id}) => id === iconHourSixNumber).icon,
-                            hourSevenIcon: Icon.find(({id}) => id === iconHourSevenNumber)
-                                .icon,
-                            hourEightIcon: Icon.find(({id}) => id === iconHourEightNumber)
-                                .icon,
-                            hourNineIcon: Icon.find(({id}) => id === iconHourNineNumber)
-                                .icon,
-                            hourTenIcon: Icon.find(({id}) => id === iconHourTenNumber).icon,
-                            hourElevenIcon: Icon.find(({id}) => id === iconHourElevenNumber)
-                                .icon,
-                            hourTwelveIcon: Icon.find(({id}) => id === iconHourTwelveNumber)
-                                .icon,
-                            hourOneInfo: houersWeatherResponse.data[0].IconPhrase,
-                            hourTwoInfo: houersWeatherResponse.data[1].IconPhrase,
-                            hourThreeInfo: houersWeatherResponse.data[2].IconPhrase,
-                            hourFourInfo: houersWeatherResponse.data[3].IconPhrase,
-                            hourFiveInfo: houersWeatherResponse.data[4].IconPhrase,
-                            hourSixInfo: houersWeatherResponse.data[5].IconPhrase,
-                            hourSevenInfo: houersWeatherResponse.data[6].IconPhrase,
-                            hourEightInfo: houersWeatherResponse.data[7].IconPhrase,
-                            hourNineInfo: houersWeatherResponse.data[8].IconPhrase,
-                            hourTenInfo: houersWeatherResponse.data[9].IconPhrase,
-                            hourElevenInfo: houersWeatherResponse.data[10].IconPhrase,
-                            hourTwelveInfo: houersWeatherResponse.data[11].IconPhrase,
-                            hourOneTemperature: (
-                                (houersWeatherResponse.data[0].Temperature.Value - 32) *
-                                0.5555556
-                            ).toFixed(1),
-                            hourTwoTemperature: (
-                                (houersWeatherResponse.data[1].Temperature.Value - 32) *
-                                0.5555556
-                            ).toFixed(1),
-                            hourThreeTemperature: (
-                                (houersWeatherResponse.data[2].Temperature.Value - 32) *
-                                0.5555556
-                            ).toFixed(1),
-                            hourFourTemperature: (
-                                (houersWeatherResponse.data[3].Temperature.Value - 32) *
-                                0.5555556
-                            ).toFixed(1),
-                            hourFiveTemperature: (
-                                (houersWeatherResponse.data[4].Temperature.Value - 32) *
-                                0.5555556
-                            ).toFixed(1),
-                            hourSixTemperature: (
-                                (houersWeatherResponse.data[5].Temperature.Value - 32) *
-                                0.5555556
-                            ).toFixed(1),
-                            hourSevenTemperature: (
-                                (houersWeatherResponse.data[6].Temperature.Value - 32) *
-                                0.5555556
-                            ).toFixed(1),
-                            hourEightTemperature: (
-                                (houersWeatherResponse.data[7].Temperature.Value - 32) *
-                                0.5555556
-                            ).toFixed(1),
-                            hourNineTemperature: (
-                                (houersWeatherResponse.data[8].Temperature.Value - 32) *
-                                0.5555556
-                            ).toFixed(1),
-                            hourTenTemperature: (
-                                (houersWeatherResponse.data[9].Temperature.Value - 32) *
-                                0.5555556
-                            ).toFixed(1),
-                            hourElevenTemperature: (
-                                (houersWeatherResponse.data[10].Temperature.Value - 32) *
-                                0.5555556
-                            ).toFixed(1),
-                            hourTwelveTemperature: (
-                                (houersWeatherResponse.data[11].Temperature.Value - 32) *
-                                0.5555556
-                            ).toFixed(1),
-                        });
+                            weather: new Array(12).fill().map((item, index) => ({
+                                hour: houersWeatherResponse.data[index].DateTime,
+                                icon: Icon.find(({id}) => id === houersWeatherResponse.data[index].WeatherIcon).icon,
+                                info: houersWeatherResponse.data[index].IconPhrase,
+                                temperature: temperatureCalculate(houersWeatherResponse.data[index].Temperature.Value),
+                            }))
+                        })
                         break;
                     default:
                         const defaultWeatherResponse = await Axios.get(
                             `https://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${API_KEY}&language=pl-PL`
                         );
-                        const iconNumber = defaultWeatherResponse.data[0].WeatherIcon;
                         setWeather({
-                            state: "succes",
+                            state: API_RESPONSE_STATUS.success,
                             city: cityKeyResponse.data[0]?.LocalizedName,
-                            icon: Icon.find(({id}) => id === iconNumber).icon,
-                            info: defaultWeatherResponse.data[0].WeatherText,
-                            temperature:
-                            defaultWeatherResponse.data[0].Temperature.Metric.Value,
-                        });
+                            weather: {
+                                icon: Icon.find(({id}) => id === defaultWeatherResponse.data[0].WeatherIcon).icon,
+                                info: defaultWeatherResponse.data[0].WeatherText,
+                                temperature: defaultWeatherResponse.data[0].Temperature.Metric.Value,
+                            }
+                        })
                 }
             } catch (error) {
                 console.error(error);

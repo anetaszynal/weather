@@ -1,4 +1,4 @@
-export * from "./Weather";
+export * from "./OneDayWeather";
 export * from "./DefaultWeather";
-export * from "./FiveDayWeather";
+export * from "./FiveDaysWeather";
 export * from "./HouersWeather";
