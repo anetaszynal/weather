@@ -6,6 +6,7 @@ import {DefaultWeather, FiveDayWeather, HoursWeather, Weather} from "./component
 import {useWeather} from "./useWeather";
 import {Loading, Failure} from "./styled";
 import {Buttons} from "./components/Buttons";
+import {API_RESPONSE_STATUS} from "./lib"
 
 function App() {
     const {weather, weatherOption, getCityName, fetchData, fiveDaysWeather, hours, oneDayWeather} = useWeather();
@@ -21,19 +22,19 @@ function App() {
                 getCityName={getCityName}
                 onFormCityButtonClick={onFormCityButtonClick}
             />
-            {weather.state === "loading" && (
+            {weather.state === API_RESPONSE_STATUS.loading && (
                 <Loading>Proszę czekać, trwa pobieranie danych ...</Loading>
             )}
-            {weather.state === "error" && (
+            {weather.state === API_RESPONSE_STATUS.error && (
                 <Failure>
                     Niestety :( Nie udało się pobrać danych. Sprawdź czy poprawnie wpisałeś nazwę
                     miejscowości.
                 </Failure>
             )}
-            {weather.state === "succes" && weatherOption === "oneDay" && <Weather weather={weather}/>}
-            {weather.state === "succes" && weatherOption === "default" && <DefaultWeather weather={weather}/>}
-            {weather.state === "succes" && weatherOption === "fiveDays" && <FiveDayWeather weather={weather}/>}
-            {weather.state === "succes" && weatherOption === "hours" && <HoursWeather weather={weather}/>}
+            {weather.state === API_RESPONSE_STATUS.success && weatherOption === "oneDay" && <Weather weather={weather}/>}
+            {weather.state === API_RESPONSE_STATUS.success && weatherOption === "default" && <DefaultWeather weather={weather}/>}
+            {weather.state === API_RESPONSE_STATUS.success && weatherOption === "fiveDays" && <FiveDayWeather weather={weather}/>}
+            {weather.state === API_RESPONSE_STATUS.success && weatherOption === "hours" && <HoursWeather weather={weather}/>}
             <Buttons
                 fiveDaysWeather={fiveDaysWeather}
                 hours={hours}

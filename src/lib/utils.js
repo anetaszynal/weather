@@ -10,8 +10,8 @@ export const formatFullDate = (date) =>
 
 export const formatWeatherDaysDate = (weatherDate) =>
     new Date(weatherDate).toLocaleString(undefined, {
-            month: "long",
-            day: "numeric",
+        month: "long",
+        day: "numeric",
     });
 
 export const formatWeatherHoursDate = (weatherDate) =>
@@ -19,3 +19,7 @@ export const formatWeatherHoursDate = (weatherDate) =>
         hour: "numeric",
         minute: "numeric",
     });
+
+export const temperatureCalculate = (temperature) => {
+    return ((temperature - 32) * 0.5555556).toFixed(1)
+}
